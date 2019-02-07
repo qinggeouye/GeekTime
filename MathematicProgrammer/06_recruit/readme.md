@@ -6,4 +6,4 @@
 
 [lesson6_1.py](https://github.com/qinggeouye/GeekTime/blob/master/MathematicProgrammer/06_recruit/lesson6_1.py)
 
-[极客时间版权所有](https://time.geekbang.org/column/article/73511)
+[极客时间版权所有](https://time.geekbang.org/column/article/73834)
