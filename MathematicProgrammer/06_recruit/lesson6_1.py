@@ -14,7 +14,7 @@ def merge_sort(to_sort=None):
     if len(to_sort) == 1:
         return to_sort
     # 将数组分解成左右两半
-    mid = len(to_sort) / 2
+    mid = len(to_sort) // 2  # python3 // 表示整除，不带小数
     left = copy.copy(to_sort[0:mid])
     right = copy.copy(to_sort[mid:len(to_sort)])
     # 嵌套调用 对两半数组分别进行排序

@@ -23,7 +23,7 @@ def get_all_prod_factors(n, result=None):
             if (i == 1 and i not in result) or (i != 1 and n % i == 0):
                 new_result = copy.copy(result)
                 new_result.append(i)
-                get_all_prod_factors(n / i, new_result)
+                get_all_prod_factors(n // i, new_result)  # python3 // 表示整除，不带小数
 
 
 if __name__ == '__main__':
