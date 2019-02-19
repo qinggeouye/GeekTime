@@ -17,7 +17,7 @@ def min_coins_recruit(target_money, coins):
 
     result = list()
     for j in coins:
-        count = min_coins_recruit(target_money - j, copy.copy(coins))
+        count = min_coins_recruit(target_money - j, coins)
         if count is None:
             continue
         else:
