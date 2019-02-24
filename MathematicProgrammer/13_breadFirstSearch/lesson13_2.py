@@ -13,30 +13,28 @@ def bfs_dir(path):
     # 给出的路径是否是一个目录
     if not os.path.isdir(path):
         return
-    que = queue.Queue()
-    visited = set()
-    for p in os.listdir(path):
-        bfs_path = path + os.sep + p
-        if os.path.isdir(bfs_path):
-            que.put(bfs_path)
-            visited.add(bfs_path)
-            print('文件夹\t', bfs_path)
-        else:
-            print('文件\t', bfs_path)
+    que = queue.Queue()  # 添加路径
+    visited = set()  # 已访问路径
+    que, visited = bfs(path, que, visited)  # 冷启动
     while not que.empty():
         cur_path = que.get()
         if len(os.listdir(cur_path)) == 0:
             continue
-        for p in os.listdir(cur_path):
-            bfs_path = cur_path + os.sep + p
-            if bfs_path in visited:
-                continue
-            if os.path.isdir(bfs_path):
-                que.put(bfs_path)
-                visited.add(bfs_path)
-                print("文件夹\t", bfs_path)
-            else:
-                print("文件\t", bfs_path)
+        que, visited = bfs(cur_path, que, visited)  # 搜索
+
+
+def bfs(cur_path, que, visited):
+    for p in os.listdir(cur_path):
+        bfs_path = cur_path + os.sep + p
+        if bfs_path in visited:
+            continue
+        if os.path.isdir(bfs_path):
+            que.put(bfs_path)
+            visited.add(bfs_path)
+            print("文件夹\t", bfs_path)
+        else:
+            print("文件\t", bfs_path)
+    return que, visited
 
 
 if __name__ == "__main__":
