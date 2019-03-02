@@ -41,7 +41,7 @@ def dijkstra(graph, source):
     :return: pre_node 前驱节点
     """
     nodes_list = list()
-    # 图 graph 中到节点id的集合
+    # 图 graph 中的节点id的集合
     for node in range(len(graph)):
         nodes_list.append(graph[node].user_id)
 
