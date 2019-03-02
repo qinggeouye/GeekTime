@@ -124,6 +124,6 @@ if __name__ == "__main__":
     print("\n------------- Dijkstra 单源最短路径算法 --------------\n")
     s = 1  # 源点
     pre_node_list = dijkstra(user_nodes_list, s)
-    print("下标节点的前驱节点：", pre_node_list, "\n")
+    print("下标节点对应的前驱节点：", pre_node_list, "\n")
     # 打印路径
     shortest_path(user_nodes_list, s, pre_node_list)
