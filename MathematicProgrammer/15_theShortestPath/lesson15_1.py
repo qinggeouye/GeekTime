@@ -97,7 +97,7 @@ def shortest_path(graph, source, pre_node):
     :param pre_node: 前驱节点列表
     :return:
     """
-    print("------源点 %s 到其它各节点的最短路径-------", source)
+    print("-------------- 源点 %s 到其它各节点的最短路径 ------------" % source)
     for k in range(len(graph)):
         pre = pre_node[k]
         if pre is None:
