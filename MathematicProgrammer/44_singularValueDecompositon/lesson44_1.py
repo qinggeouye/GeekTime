@@ -39,8 +39,8 @@ print(" 右奇异向量: \n", v_eig_vectors, "\n")
 # 因为 XX' = (USV')(VS'U') = U(SS')U' , 则奇异值 σ 是 XX' 非零特征值的平方根
 s_eig_values = np.sqrt(u_eig_values[u_eig_values > 0])
 print(" 奇异值: ", s_eig_values)
-s_eig_values = np.sqrt(v_eig_values[v_eig_values > 0])
-print(" 奇异值: ", s_eig_values, "\n")
+s_eig_values2 = np.sqrt(v_eig_values[v_eig_values > 0])
+print(" 奇异值: ", s_eig_values2, "\n")
 S = np.zeros((7, 5))  # 奇异矩阵
 for i in range(len(s_eig_values)):
     S[i, i] = s_eig_values[i]
@@ -55,4 +55,10 @@ U, sigma, VT = la.svd(x)
 print(U, "\n")
 print(sigma, "\n")
 print(VT, "\n")
+S2 = np.zeros((7, 5))  # 奇异矩阵
+for i in range(len(sigma)):
+    S2[i, i] = sigma[i]
+print(" 酉矩阵: \n", U.transpose().dot(U))  # 酉矩阵
+print(" 酉矩阵: \n", VT.transpose().dot(VT))  # 酉矩阵
+print(" 矩阵还原: \n", U.dot(S2).dot(VT.transpose()))
 
