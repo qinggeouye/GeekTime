@@ -52,9 +52,9 @@ print(" 矩阵还原: \n", u_eig_vectors.dot(S).dot(v_eig_vectors.transpose()))
 print("\n--------------- numpy 库的 linalg 已经实现 SVD ---------------\n")
 # linalg 已经实现 SVD
 U, sigma, VT = la.svd(x)
-print(U, "\n")
-print(sigma, "\n")
-print(VT, "\n")  # 注意 VT 已经转置
+print(np.around(U, decimals=2), "\n")
+print(np.around(sigma, decimals=2), "\n")
+print(np.around(VT, decimals=2), "\n")  # 注意 VT 已经转置
 S2 = np.zeros((7, 5))  # 奇异矩阵
 for i in range(len(sigma)):
     S2[i, i] = sigma[i]
