@@ -1,12 +1,15 @@
 import pandas as pd
 import numpy as np
 from sklearn.preprocessing import scale
+import time
 
 """
 基于用户的协同过滤（第 38 讲））
 数据集 MovieLens 
 http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
 """
+# 运行开始时间
+time_start = time.time()
 
 # 加载用户对电影对评分数据
 df = pd.read_csv("ml-latest-small/ratings.csv")
@@ -64,4 +67,11 @@ for userId in range(user_num):
 
 # 进行元素对应的除法 归一化
 p = np.divide(usp, np.mat(usr).transpose())
+
+# 运行结束时间
+time_end = time.time()
+
 print(p)
+print(np.shape(p))
+
+print("程序运行耗时：", time_end - time_start)
