@@ -14,10 +14,10 @@ def combine(teams, result, m):
         print(result)
         return
 
-    for i in range(len(teams)):
+    for i, team in enumerate(teams):
         # 从剩下的队伍中 选择一个 加入结果
         new_result = copy.copy(result)
-        new_result.append(teams[i])
+        new_result.append(team)
         # 只考虑当前选择之后的所有队伍(组合与排列的区别)
         rest_teams = teams[i+1:len(teams)]
         # 递归调用 对于剩余的队伍继续生成组合
