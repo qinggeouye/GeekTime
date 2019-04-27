@@ -22,10 +22,10 @@ def get_all_components(total_rewards, result=None):
     elif total_rewards < 0:
         return
     else:
-        for i in range(len(rewards)):
+        for i, reward in enumerate(rewards):
             new_result = copy.copy(result)  # 由于有4种情况，需要 clone 当前的解并传入被调用的函数
-            new_result.append(rewards[i])  # 记录但当前但选择，解决一点问题
-            get_all_components(total_rewards-rewards[i], new_result)  # 剩下但问题，留给嵌套调用去解决
+            new_result.append(reward)  # 记录当前的选择，解决一点问题
+            get_all_components(total_rewards - reward, new_result)  # 剩下的问题，留给嵌套调用去解决
 
 
 if __name__ == '__main__':
