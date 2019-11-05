@@ -8,7 +8,6 @@ import json
 # 下载图片
 def download(src, pic_id, save_path_):
     directory = save_path_ + str(pic_id) + '.jpg'
-
     try:
         pic = requests.get(src, timeout=10)
         fp = open(directory, 'wb')
@@ -26,22 +25,30 @@ def get_resp(query_, limit_, start_):
     return response_
 
 
-query = '王祖贤'
-limit = 20
-start = 0
+def mk_save_path(pic_path_):
+    if not os.path.exists(pic_path_):
+        # os.mkdir(pic_path)
+        os.makedirs(pic_path_)
+    return os.getcwd() + '/' + pic_path_ + '/'
 
-''' 获取图片总数量 '''
-total = get_resp(query, limit, start)['total']
-print(total)
-
-pic_path = '10'  # 相对目录
-if not os.path.exists(pic_path):
-    os.mkdir(pic_path)
-save_path = os.getcwd() + '/' + pic_path + '/'
 
 # 循环 请求全部的 url
-for i in range(start, total, limit):
-    response = get_resp(query, limit, i)
-    for image in response['images']:
-        print(image['src'])  # 查看当前下载的图片地址
-        download(image['src'], image['id'], save_path)  # 下载一张图片
+def get_response_json():
+    save_path = mk_save_path(pic_path)
+    for i in range(start, total, limit):
+        response = get_resp(query, limit, i)
+        for image in response['images']:
+            print(image['src'])  # 查看当前下载的图片地址
+            download(image['src'], image['id'], save_path)  # 下载一张图片
+
+
+query = '王祖贤'
+limit = 20  # 请求 url 的 start 从 0 开始，每次请求间隔 20
+start = 0
+# 获取图片总数
+total = get_resp(query, limit, start)['total']
+# 保存目录
+pic_path = '10/json'  # 相对目录
+
+if __name__ == "__main__":
+    get_response_json()
